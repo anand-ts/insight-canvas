@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### added custom
+
+# ignore node_modules everywhere, not just at project root
+**/node_modules/
+
+# Vite/CRA build output
+dist/
+build/           # you already have this, but double-check your client uses it
+client/dist/     # if Vite is outputting to "dist" under client/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+# virtualenvs
+venv/
+.env/            # catch any stray ".env" (not just .env.local)
+.venv/
+
+# test caches & coverage (Python)
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs
+*.log
+logs/
+
+# lock-files you DO want committed, so: 
+# (ensure you do NOT ignore yarn.lock or package-lock.json)
