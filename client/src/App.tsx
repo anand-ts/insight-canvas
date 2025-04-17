@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Container, Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import Canvas from './components/Canvas';
 import Sidebar from './components/Sidebar';
 import './App.css';
 
 function App() {
-  // State for canvas dimensions
+  // State for canvas dimensions - now using full window size
   const [dimensions, setDimensions] = useState({
-    width: window.innerWidth * 0.8,
-    height: window.innerHeight * 0.7
+    width: window.innerWidth,
+    height: window.innerHeight
   });
 
   // State for sidebar and grid
@@ -18,8 +18,8 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
-        width: window.innerWidth * 0.8,
-        height: window.innerHeight * 0.7
+        width: window.innerWidth,
+        height: window.innerHeight
       });
     };
 
@@ -36,25 +36,37 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Container maxW="container.xl" py={4}>
-        <Heading as="h1" mb={4}>InsightCanvas</Heading>
-        <Box 
-          w="100%" 
-          h="70vh" 
-          border="1px solid" 
-          borderColor="gray.200" 
-          borderRadius="md"
-          overflow="hidden"
-          position="relative"
-        >
-          <Canvas 
-            width={dimensions.width} 
-            height={dimensions.height} 
-            showGrid={showGrid}
-          />
-        </Box>
-      </Container>
+    <div className="App" style={{ height: '100vh', overflow: 'hidden' }}>
+      {/* Floating header */}
+      <Box 
+        position="absolute" 
+        top={4} 
+        left={4} 
+        zIndex={10}
+        bg="white" 
+        p={2} 
+        borderRadius="md" 
+        boxShadow="sm"
+      >
+        <Heading as="h1" size="md">InsightCanvas</Heading>
+      </Box>
+      
+      {/* Full page canvas container */}
+      <Box 
+        position="absolute"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        overflow="hidden"
+      >
+        <Canvas 
+          width={dimensions.width} 
+          height={dimensions.height} 
+          showGrid={showGrid}
+        />
+      </Box>
+      
       <Sidebar 
         isOpen={isSidebarOpen} 
         onToggle={toggleSidebar} 
