@@ -32,6 +32,12 @@ dist/
 build/           # you already have this, but double-check your client uses it
 client/dist/     # if Vite is outputting to "dist" under client/
 
+# Environment variables files (IMPORTANT for API keys)
+.env
+**/.env
+.env.*
+!.env.example
+
 # Python artifacts
 __pycache__/
 *.py[cod]

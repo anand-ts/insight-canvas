@@ -1,10 +1,15 @@
 from fastapi import FastAPI, UploadFile, File
 import openai
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
 
-# Set your OpenAI API key here or use environment variables for security
-openai.api_key = "YOUR_OPENAI_API_KEY"
+# Get API key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.get("/")
 async def root():
